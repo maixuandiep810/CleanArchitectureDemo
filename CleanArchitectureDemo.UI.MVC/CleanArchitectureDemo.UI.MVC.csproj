@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CleanArchitectureDemo.Infrastructure.Data\CleanArchitectureDemo.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\CleanArchitectureDemo.Infrastructure.IoC\CleanArchitectureDemo.Infrastructure.IoC.csproj" />
   </ItemGroup>
 
   <ItemGroup>

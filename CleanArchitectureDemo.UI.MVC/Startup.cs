@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CleanArchitecture.Infrastructure.Data.Context;
+using CleanArchitecture.Infrastructure.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,8 @@ namespace CleanArchitectureDemo.UI.MVC
                 options.UseSqlServer(
                     Configuration.GetConnectionString("LibraryConnection"));
             });
+
+            DependencyContainer.RegisterServices(services);
 
             services.AddControllersWithViews();
         }
