@@ -1,0 +1,23 @@
+1. Migration
+- Trong 1 solution, ta có thể migration với EF ở ngay terminal solution., với điều kiện chỉ định project có file startup, mà có hàm configure ...UseSqlServer... (thường là MVC project). Và MVC project phải có đầy đủ EF Packages.
+2. Command
+- Library
+dotnet new classlib -f netcoreapp3.1   
+dotnet new classlib -f net5.0     
+(-f = framework, --f = force)
+dotnet sln CleanArchitectureDemo.sln add ./CleanArchitectureDemo.UI.MVC/CleanArchitectureDemo.UI.MVC.csproj 
+dotnet add ./CleanArchitectureDemo.Infrastructure.Data/CleanArchitectureDemo.Infrastructure.Data.csproj reference ./CleanArchitectureDemo.Domain/CleanArchitectureDemo.Domain.csproj
+
+- Entity Framework
+dotnet add package Microsoft.EntityFrameworkCore 
+dotnet add package Microsoft.EntityFrameworkCore.Design 
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer 
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+
++ Multi Project CLI
+B1/
+Install ALL PACKAGE cho EF ở StartUp Project.
+B2/
+dotnet ef migrations --project ./CleanArchitectureDemo.Infrastructure.Data/CleanArchitectureDemo.Infrastructure.Data.csproj --startup-project ./CleanArchitectureDemo.UI.MVC/CleanArchitectureDemo.UI.MVC.csproj  add "InitialMigration" -c LibraryDbContext
+B3/
+dotnet ef database update --project ./CleanArchitectureDemo.Infrastructure.Data/CleanArchitectureDemo.Infrastructure.Data.csproj --startup-project ./CleanArchitectureDemo.UI.MVC/CleanArchitectureDemo.UI.MVC.csproj
