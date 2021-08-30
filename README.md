@@ -1,4 +1,4 @@
-s# CleanArchitectDemo
+# CleanArchitectDemo
 
 ## Table of Contents
 
